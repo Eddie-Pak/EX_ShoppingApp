@@ -1,4 +1,4 @@
-package com.fastcampusmall.app.ui.theme
+package com.fastcampusmall.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
