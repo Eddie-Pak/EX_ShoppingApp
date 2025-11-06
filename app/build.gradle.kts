@@ -36,9 +36,6 @@ android {
     kotlinOptions {
         jvmTarget = "21"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
@@ -57,7 +54,6 @@ dependencies {
 
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

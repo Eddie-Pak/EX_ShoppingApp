@@ -1,4 +1,4 @@
-package com.fastcampusmall.app
+package com.fastcampusmall.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
