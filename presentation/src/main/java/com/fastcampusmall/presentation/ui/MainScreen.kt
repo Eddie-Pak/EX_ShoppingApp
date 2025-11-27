@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.fastcampusmall.presentation.common.CustomAppBar
 import com.fastcampusmall.presentation.navigation.AppNavHost
 import com.fastcampusmall.presentation.common.CustomNavigationBar
 
@@ -17,6 +18,7 @@ fun MainScreen() {
 
     Scaffold(
         snackbarHost = { snackBarHostState },
+        topBar = { CustomAppBar() },
         bottomBar = { CustomNavigationBar(navController) }
     ) { innerPadding ->
         AppNavHost(
