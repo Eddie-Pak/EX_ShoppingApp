@@ -12,7 +12,7 @@ import com.fastcampusmall.presentation.navigation.AppNavHost
 import com.fastcampusmall.presentation.common.CustomNavigationBar
 
 @Composable
-fun MainScreen() {
+fun EntryPointScreen() {
     val snackBarHostState = remember { SnackbarHostState() }
     val navController = rememberNavController()
 
