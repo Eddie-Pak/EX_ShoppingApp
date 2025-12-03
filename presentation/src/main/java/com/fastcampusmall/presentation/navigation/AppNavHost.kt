@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.fastcampusmall.presentation.ui.screen.main.MainScreen
 
 @Composable
 fun AppNavHost(
@@ -18,7 +19,7 @@ fun AppNavHost(
         startDestination = startDestination
     ) {
         composable<ScreenRouteDef.Main> {
-            Text("Main")
+            MainScreen(modifier)
         }
 
         composable<ScreenRouteDef.Category> {

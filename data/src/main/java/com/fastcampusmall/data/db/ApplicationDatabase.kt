@@ -15,7 +15,8 @@ import com.fastcampusmall.data.db.entity.PurchaseProductEntity
         LikeProductEntity::class,
         PurchaseProductEntity::class
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class ApplicationDatabase : RoomDatabase() {
     companion object {
