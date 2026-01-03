@@ -2,6 +2,9 @@ package com.fastcampusmall.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fastcampusmall.domain.model.Banner
+import com.fastcampusmall.domain.model.BannerList
+import com.fastcampusmall.domain.model.Product
 import com.fastcampusmall.domain.usecase.MainUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +22,22 @@ class MainViewModel @Inject constructor(useCase: MainUseCase) : ViewModel() {
         viewModelScope.launch {
             _columnCount.emit(count)
         }
+    }
+
+    fun openProduct(product: Product) {
+
+    }
+
+    fun openCarouselProduct(product: Product) {
+
+    }
+
+    fun openBanner(banner: Banner) {
+
+    }
+
+    fun openBannerList(bannerList: BannerList) {
+
     }
 
     companion object {

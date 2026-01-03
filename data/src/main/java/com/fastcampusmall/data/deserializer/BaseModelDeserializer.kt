@@ -3,6 +3,7 @@ package com.fastcampusmall.data.deserializer
 import com.fastcampusmall.domain.model.Banner
 import com.fastcampusmall.domain.model.BannerList
 import com.fastcampusmall.domain.model.BaseModel
+import com.fastcampusmall.domain.model.Carousel
 import com.fastcampusmall.domain.model.ModelType
 import com.fastcampusmall.domain.model.Product
 import com.google.gson.GsonBuilder
@@ -32,6 +33,8 @@ class BaseModelDeserializer : JsonDeserializer<BaseModel> {
             ModelType.PRODUCT -> gson.fromJson(root, Product::class.java)
 
             ModelType.BANNER_LIST -> gson.fromJson(root, BannerList::class.java)
+
+            ModelType.CAROUSEL -> gson.fromJson(root, Carousel::class.java)
         }
     }
 }
