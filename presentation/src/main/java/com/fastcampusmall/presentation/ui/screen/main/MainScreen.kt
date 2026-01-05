@@ -14,10 +14,12 @@ import com.fastcampusmall.domain.model.BannerList
 import com.fastcampusmall.domain.model.Carousel
 import com.fastcampusmall.domain.model.ModelType
 import com.fastcampusmall.domain.model.Product
+import com.fastcampusmall.domain.model.Ranking
 import com.fastcampusmall.presentation.ui.component.BannerCard
 import com.fastcampusmall.presentation.ui.component.BannerListCard
 import com.fastcampusmall.presentation.ui.component.CarouselCard
 import com.fastcampusmall.presentation.ui.component.ProductCard
+import com.fastcampusmall.presentation.ui.component.RankingCard
 import com.fastcampusmall.presentation.ui.theme.FastcampusmallTheme
 import com.fastcampusmall.presentation.viewmodel.MainViewModel
 
@@ -56,15 +58,19 @@ fun MainScreen(
                     is Carousel -> CarouselCard(item) { model ->
                         viewModel.openCarouselProduct(model)
                     }
+
+                    is Ranking -> RankingCard(item) { model ->
+                        viewModel.openRankingProduct(model)
+                    }
                 }
             }
         }
     }
 }
 
-private fun getSpanCountByType(type: ModelType, defaultColumnCount: Int) : Int {
+private fun getSpanCountByType(type: ModelType, defaultColumnCount: Int): Int {
     return when (type) {
-        ModelType.BANNER, ModelType.BANNER_LIST, ModelType.CAROUSEL -> defaultColumnCount
+        ModelType.BANNER, ModelType.BANNER_LIST, ModelType.CAROUSEL, ModelType.RANKING -> defaultColumnCount
 
         ModelType.PRODUCT -> 1
     }
