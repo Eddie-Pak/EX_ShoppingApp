@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import com.fastcampusmall.presentation.ui.screen.category.CategoryScreen
+import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
 
 @Composable
@@ -32,7 +32,7 @@ fun AppNavHost(
             startDestination = ScreenRouteDef.CategoryMain
         ) {
             composable<ScreenRouteDef.CategoryMain> {
-                CategoryScreen(modifier)
+                CategoryMainScreen(modifier)
             }
 
             composable<ScreenRouteDef.CategoryDetail> {
