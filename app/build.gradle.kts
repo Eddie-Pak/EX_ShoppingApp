@@ -55,6 +55,8 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
 
+    implementation(libs.google.code.gson)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
