@@ -6,28 +6,46 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
+import com.fastcampusmall.presentation.ui.screen.category.CategoryScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
 
 @Composable
 fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier,
-    startDestination: ScreenRouteDef = ScreenRouteDef.Main
+    startDestination: ScreenRouteDef = ScreenRouteDef.MainGraph
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination
     ) {
-        composable<ScreenRouteDef.Main> {
-            MainScreen(modifier)
+        navigation<ScreenRouteDef.MainGraph>(
+            startDestination = ScreenRouteDef.Main
+        ) {
+            composable<ScreenRouteDef.Main> {
+                MainScreen(modifier)
+            }
         }
 
-        composable<ScreenRouteDef.Category> {
-            Text("Category")
+        navigation<ScreenRouteDef.CategoryGraph>(
+            startDestination = ScreenRouteDef.CategoryMain
+        ) {
+            composable<ScreenRouteDef.CategoryMain> {
+                CategoryScreen(modifier)
+            }
+
+            composable<ScreenRouteDef.CategoryDetail> {
+                Text("CategoryDetail")
+            }
         }
 
-        composable<ScreenRouteDef.MyPage> {
-            Text("MyPage")
+        navigation<ScreenRouteDef.MyPageGraph>(
+            startDestination = ScreenRouteDef.MyPage
+        ){
+            composable<ScreenRouteDef.MyPage> {
+                Text("MyPage")
+            }
         }
     }
 }

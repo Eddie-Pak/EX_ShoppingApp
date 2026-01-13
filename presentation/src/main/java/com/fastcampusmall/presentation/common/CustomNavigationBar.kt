@@ -26,17 +26,17 @@ fun CustomNavigationBar(
         BottomNaviItem(
             tabName = "Home",
             icon = ImageVector.vectorResource(R.drawable.icon_home),
-            route = ScreenRouteDef.Main
+            route = ScreenRouteDef.MainGraph
         ),
         BottomNaviItem(
             tabName = "Category",
             icon = ImageVector.vectorResource(R.drawable.icon_category),
-            route = ScreenRouteDef.Category
+            route = ScreenRouteDef.CategoryGraph
         ),
         BottomNaviItem(
             tabName = "MyPage",
             icon = ImageVector.vectorResource(R.drawable.icon_mypage),
-            route = ScreenRouteDef.MyPage
+            route = ScreenRouteDef.MyPageGraph
         )
     )
 
@@ -45,7 +45,7 @@ fun CustomNavigationBar(
     ) {
         navigationBarItemList.forEach { item ->
             NavigationBarItem(
-                selected = currentRoute?.route == item.route::class.qualifiedName,
+                selected = currentRoute?.parent?.route == item.route::class.qualifiedName,
                 onClick = {
                     navController.navigate(item.route) {
                         popUpTo(navController.graph.findStartDestination().id) {

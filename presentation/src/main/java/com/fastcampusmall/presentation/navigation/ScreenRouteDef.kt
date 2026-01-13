@@ -5,10 +5,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed class ScreenRouteDef {
     @Serializable
+    data object MainGraph : ScreenRouteDef()
+
+    @Serializable
+    data object CategoryGraph : ScreenRouteDef()
+
+    @Serializable
+    data object MyPageGraph : ScreenRouteDef()
+
+    @Serializable
     data object Main : ScreenRouteDef()
 
     @Serializable
-    data object Category : ScreenRouteDef()
+    data object CategoryMain : ScreenRouteDef()
+    @Serializable
+    data object CategoryDetail : ScreenRouteDef()
+
 
     @Serializable
     data object MyPage : ScreenRouteDef()
