@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.presentation.ui.theme.FastcampusmallTheme
 import com.fastcampusmall.presentation.viewmodel.CategoryViewModel
 
@@ -25,6 +26,7 @@ import com.fastcampusmall.presentation.viewmodel.CategoryViewModel
 fun CategoryMainScreen(
     modifier: Modifier,
     viewModel: CategoryViewModel = hiltViewModel(),
+    onCategoryClick: (Category) -> Unit,
 ) {
     val categories by viewModel.categories.collectAsState(listOf())
 
@@ -40,6 +42,7 @@ fun CategoryMainScreen(
                         .height(100.dp)
                         .padding(10.dp)
                         .shadow(10.dp),
+                    onClick = { onCategoryClick(categories[it]) },
                     shape = RoundedCornerShape(4.dp)
                 ) {
                     Text(

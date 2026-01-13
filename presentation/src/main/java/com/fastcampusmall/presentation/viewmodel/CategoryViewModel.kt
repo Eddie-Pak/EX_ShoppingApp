@@ -19,7 +19,7 @@ class CategoryViewModel @Inject constructor(
     private val _products = MutableStateFlow<List<Product>>(listOf())
     val products get() = _products.asStateFlow()
 
-    suspend fun updateCategory(category: Category) {
+    suspend fun getProductsByCategory(category: Category) {
         useCase.getProductsByCategory(category).collectLatest {
             _products.emit(it)
         }
