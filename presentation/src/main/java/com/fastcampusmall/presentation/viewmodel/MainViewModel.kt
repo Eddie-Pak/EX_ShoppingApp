@@ -24,10 +24,6 @@ class MainViewModel @Inject constructor(useCase: MainUseCase) : ViewModel() {
         }
     }
 
-    fun openProduct(product: Product) {
-
-    }
-
     fun openCarouselProduct(product: Product) {
 
     }

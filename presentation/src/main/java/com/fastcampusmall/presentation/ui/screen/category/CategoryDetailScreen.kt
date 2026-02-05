@@ -19,7 +19,8 @@ import com.fastcampusmall.presentation.viewmodel.CategoryViewModel
 fun CategoryDetailScreen(
     modifier: Modifier,
     category: Category,
-    viewModel: CategoryViewModel = hiltViewModel()
+    viewModel: CategoryViewModel = hiltViewModel(),
+    onProductClick: (String) -> Unit
 ) {
     val products by viewModel.products.collectAsState()
 
@@ -33,8 +34,8 @@ fun CategoryDetailScreen(
             contentPadding = PaddingValues(10.dp)
         ) {
             items(products.size) { index ->
-                ProductCard(product = products[index]) {
-
+                ProductCard(product = products[index]) { product ->
+                    onProductClick(product.productId)
                 }
             }
         }

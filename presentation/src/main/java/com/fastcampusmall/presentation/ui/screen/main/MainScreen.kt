@@ -27,6 +27,7 @@ import com.fastcampusmall.presentation.viewmodel.MainViewModel
 fun MainScreen(
     modifier: Modifier,
     viewModel: MainViewModel = hiltViewModel(),
+    onProductClick: (String) -> Unit
 ) {
     val modelList by viewModel.modelList.collectAsState(listOf())
     val columnCount by viewModel.columnCount.collectAsState()
@@ -48,7 +49,7 @@ fun MainScreen(
                     }
 
                     is Product -> ProductCard(item) { model ->
-                        viewModel.openProduct(model)
+                        onProductClick(model.productId)
                     }
 
                     is BannerList -> BannerListCard(item) { model ->

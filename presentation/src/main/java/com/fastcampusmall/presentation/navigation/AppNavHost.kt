@@ -12,6 +12,7 @@ import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.presentation.common.parcelableType
 import com.fastcampusmall.presentation.ui.screen.category.CategoryDetailScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
+import com.fastcampusmall.presentation.ui.screen.detail.ProductDetailScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
 import kotlin.reflect.typeOf
 
@@ -29,7 +30,12 @@ fun AppNavHost(
             startDestination = ScreenRouteDef.Main
         ) {
             composable<ScreenRouteDef.Main> {
-                MainScreen(modifier)
+                MainScreen(
+                    modifier = modifier,
+                    onProductClick = { productId ->
+                        navController.navigate(ScreenRouteDef.ProductDetail(productId))
+                    }
+                )
             }
         }
 
@@ -47,7 +53,9 @@ fun AppNavHost(
             ) { backStackEntry ->
                 val category = backStackEntry.toRoute<ScreenRouteDef.CategoryDetail>()
 
-                CategoryDetailScreen(modifier = modifier, category = category.category)
+                CategoryDetailScreen(modifier = modifier, category = category.category) { productId ->
+                    navController.navigate(ScreenRouteDef.ProductDetail(productId))
+                }
             }
         }
 
@@ -58,5 +66,12 @@ fun AppNavHost(
                 Text("MyPage")
             }
         }
+
+        composable<ScreenRouteDef.ProductDetail> { backStackEntry ->
+            val productId = backStackEntry.toRoute<ScreenRouteDef.ProductDetail>().productId
+
+            ProductDetailScreen(productId)
+        }
+
     }
 }

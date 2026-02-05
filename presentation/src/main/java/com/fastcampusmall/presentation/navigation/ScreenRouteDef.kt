@@ -24,4 +24,7 @@ sealed class ScreenRouteDef {
 
     @Serializable
     data object MyPage : ScreenRouteDef()
+
+    @Serializable
+    data class ProductDetail(val productId: String) : ScreenRouteDef()
 }
