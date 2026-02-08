@@ -5,11 +5,13 @@ import com.fastcampusmall.data.deserializer.CategoryDeserializer
 import com.fastcampusmall.data.repository.CategoryRepositoryImpl
 import com.fastcampusmall.data.repository.MainRepositoryImpl
 import com.fastcampusmall.data.repository.ProductDetailRepositoryImpl
+import com.fastcampusmall.data.repository.SearchRepositoryImpl
 import com.fastcampusmall.domain.model.BaseModel
 import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.domain.repository.CategoryRepository
 import com.fastcampusmall.domain.repository.MainRepository
 import com.fastcampusmall.domain.repository.ProductDetailRepository
+import com.fastcampusmall.domain.repository.SearchRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Binds
@@ -34,6 +36,10 @@ interface DataModule {
     @Binds
     @Singleton
     fun bindProductDetailRepository(productDetailRepositoryImpl: ProductDetailRepositoryImpl) : ProductDetailRepository
+
+    @Binds
+    @Singleton
+    fun bindSearchRepository(searchRepositoryImpl: SearchRepositoryImpl) : SearchRepository
 
     companion object {
         @Provides
