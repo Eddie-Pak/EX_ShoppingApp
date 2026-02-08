@@ -28,15 +28,21 @@ fun EntryPointScreen() {
         ScreenRouteDef.MyPage::class.qualifiedName
     )
 
-    val isShowBottomBar = showBottomBarRoutes.any { route ->
+    val isShowBar = showBottomBarRoutes.any { route ->
         currentDestination?.route?.contains(route ?: "") == true
     }
 
     Scaffold(
         snackbarHost = { snackBarHostState },
-        topBar = { CustomAppBar() },
+        topBar = {
+            if (isShowBar) {
+                CustomAppBar() {
+                    navController.navigate(ScreenRouteDef.Search)
+                }
+            }
+        },
         bottomBar = {
-            if (isShowBottomBar) {
+            if (isShowBar) {
                 CustomNavigationBar(navController)
             }
         }

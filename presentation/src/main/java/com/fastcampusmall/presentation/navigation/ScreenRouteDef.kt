@@ -27,4 +27,7 @@ sealed class ScreenRouteDef {
 
     @Serializable
     data class ProductDetail(val productId: String) : ScreenRouteDef()
+
+    @Serializable
+    data object Search : ScreenRouteDef()
 }

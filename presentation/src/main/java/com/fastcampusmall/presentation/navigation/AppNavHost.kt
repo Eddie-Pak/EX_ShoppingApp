@@ -14,6 +14,7 @@ import com.fastcampusmall.presentation.ui.screen.category.CategoryDetailScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
 import com.fastcampusmall.presentation.ui.screen.detail.ProductDetailScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
+import com.fastcampusmall.presentation.ui.screen.search.SearchScreen
 import kotlin.reflect.typeOf
 
 @Composable
@@ -73,5 +74,10 @@ fun AppNavHost(
             ProductDetailScreen(productId)
         }
 
+        composable<ScreenRouteDef.Search> {
+            SearchScreen() { productId ->
+                navController.navigate(ScreenRouteDef.ProductDetail(productId))
+            }
+        }
     }
 }

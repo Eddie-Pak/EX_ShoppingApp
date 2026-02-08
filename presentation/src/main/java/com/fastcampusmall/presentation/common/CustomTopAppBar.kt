@@ -14,12 +14,16 @@ import com.fastcampusmall.presentation.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomAppBar() {
+fun CustomAppBar(
+    onSearchClick: () -> Unit
+) {
     CenterAlignedTopAppBar(
         title = { Text(text = "Fastcampusmall") },
         actions = {
             IconButton(
-                onClick = {}
+                onClick = {
+                    onSearchClick()
+                }
             ) {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.icon_search),
