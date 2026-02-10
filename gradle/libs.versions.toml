@@ -9,6 +9,9 @@ lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.11.0"
 composeBom = "2025.10.01"
 appcompat = "1.7.1"
+googleGmsGoogleServices = "4.4.4"
+firebaseBom = "34.9.0"
+playServiceAuth = "21.3.0"
 navigationCompose = "2.8.8"
 lifecycleRuntimeCompose = "2.8.7"
 lifecycleViewmodelCompose = "2.8.7"
@@ -50,12 +53,18 @@ androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = 
 
 google-code-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+google-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version = "playServiceAuth" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin"}
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
