@@ -1,6 +1,5 @@
 package com.fastcampusmall.presentation.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -14,6 +13,7 @@ import com.fastcampusmall.presentation.ui.screen.category.CategoryDetailScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
 import com.fastcampusmall.presentation.ui.screen.detail.ProductDetailScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
+import com.fastcampusmall.presentation.ui.screen.mypage.MyPageScreen
 import com.fastcampusmall.presentation.ui.screen.search.SearchScreen
 import kotlin.reflect.typeOf
 
@@ -64,7 +64,7 @@ fun AppNavHost(
             startDestination = ScreenRouteDef.MyPage
         ){
             composable<ScreenRouteDef.MyPage> {
-                Text("MyPage")
+                MyPageScreen(modifier)
             }
         }
 
