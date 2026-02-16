@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -61,13 +60,6 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
-
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.analytics)
-    implementation(libs.androidx.credentials)
-    implementation(libs.androidx.credentials.play.services.auth)
-    implementation(libs.googleid)
 
     testImplementation(libs.junit)
 
