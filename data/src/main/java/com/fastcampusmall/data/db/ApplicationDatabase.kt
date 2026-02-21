@@ -18,7 +18,7 @@ import com.fastcampusmall.data.db.entity.SearchKeywordEntity
         PurchaseProductEntity::class,
         SearchKeywordEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class ApplicationDatabase : RoomDatabase() {

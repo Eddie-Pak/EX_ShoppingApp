@@ -48,7 +48,12 @@ fun MainScreen(
                         viewModel.openBanner(model)
                     }
 
-                    is Product -> ProductCard(item) { model ->
+                    is Product -> ProductCard(
+                        product = item,
+                        onLikeClick = { product ->
+                            viewModel.likeProduct(product)
+                        }
+                    ) { model ->
                         onProductClick(model.productId)
                     }
 
@@ -56,12 +61,22 @@ fun MainScreen(
                         viewModel.openBannerList(model)
                     }
 
-                    is Carousel -> CarouselCard(item) { model ->
+                    is Carousel -> CarouselCard(
+                        model = item,
+                        onLikeClick = { product ->
+                            viewModel.likeProduct(product)
+                        }
+                    ) { model ->
                         viewModel.openCarouselProduct(model)
                     }
 
-                    is Ranking -> RankingCard(item) { model ->
-                        viewModel.openRankingProduct(model)
+                    is Ranking -> RankingCard(
+                        model = item,
+                        onLikeClick = { product ->
+                            viewModel.likeProduct(product)
+                        }
+                    ) { product ->
+                        viewModel.openRankingProduct(product)
                     }
                 }
             }

@@ -3,6 +3,7 @@ package com.fastcampusmall.app.di
 import android.content.Context
 import androidx.room.Room
 import com.fastcampusmall.data.db.ApplicationDatabase
+import com.fastcampusmall.data.db.dao.LikeProductDao
 import com.fastcampusmall.data.db.dao.SearchDao
 import dagger.Module
 import dagger.Provides
@@ -31,5 +32,11 @@ object DatabaseModule {
     @Singleton
     fun provideSearchDao(database: ApplicationDatabase) : SearchDao {
         return database.searchDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLikeDao(database: ApplicationDatabase) : LikeProductDao {
+        return database.likeProductDao()
     }
 }

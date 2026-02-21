@@ -18,6 +18,7 @@ import com.fastcampusmall.domain.model.Product
 @Composable
 fun CarouselCard(
     model: Carousel,
+    onLikeClick: (Product) -> Unit,
     onClick: (Product) -> Unit
 ) {
     val scrollState = rememberLazyListState()
@@ -36,7 +37,12 @@ fun CarouselCard(
                 .wrapContentHeight()
         ) {
             items(model.productList.size) {
-                CarouselProductCard(model.productList[it]) {
+                CarouselProductCard(
+                    product = model.productList[it],
+                    onLikeClick = { product ->
+                        onLikeClick(product)
+                    }
+                ) {
                     onClick(it)
                 }
             }

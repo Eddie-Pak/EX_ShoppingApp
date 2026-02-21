@@ -6,10 +6,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.presentation.ui.component.ProductCard
 import com.fastcampusmall.presentation.ui.theme.FastcampusmallTheme
@@ -22,7 +22,7 @@ fun CategoryDetailScreen(
     viewModel: CategoryViewModel = hiltViewModel(),
     onProductClick: (String) -> Unit
 ) {
-    val products by viewModel.products.collectAsState()
+    val products by viewModel.products.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.getProductsByCategory(category)
@@ -34,7 +34,12 @@ fun CategoryDetailScreen(
             contentPadding = PaddingValues(10.dp)
         ) {
             items(products.size) { index ->
-                ProductCard(product = products[index]) { product ->
+                ProductCard(
+                    product = products[index],
+                    onLikeClick = { product ->
+                        viewModel.likeProduct(product)
+                    }
+                ) { product ->
                     onProductClick(product.productId)
                 }
             }

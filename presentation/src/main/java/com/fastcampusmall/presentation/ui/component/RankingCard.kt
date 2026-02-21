@@ -15,7 +15,11 @@ import com.fastcampusmall.domain.model.Product
 import com.fastcampusmall.domain.model.Ranking
 
 @Composable
-fun RankingCard(model: Ranking, onClick: (Product) -> Unit) {
+fun RankingCard(
+    model: Ranking,
+    onLikeClick: (Product) -> Unit,
+    onClick: (Product) -> Unit
+) {
     val pagerState = rememberPagerState(pageCount = { model.productList.size / DEFAULT_RANKING_ITEM_COUNT })
 
     Column {
@@ -33,23 +37,32 @@ fun RankingCard(model: Ranking, onClick: (Product) -> Unit) {
             Column {
                 RankingProductCard(
                     index = index * 3,
-                    product = model.productList[index * 3]
-                ) {
-                    onClick(it)
+                    product = model.productList[index * 3],
+                    onLikeClick = { product ->
+                        onLikeClick(product)
+                    }
+                ) { product ->
+                    onClick(product)
                 }
 
                 RankingProductCard(
                     index = index * 3 + 1,
-                    product = model.productList[index * 3 + 1]
-                ) {
-                    onClick(it)
+                    product = model.productList[index * 3 + 1],
+                    onLikeClick = { product ->
+                        onLikeClick(product)
+                    }
+                ) { product ->
+                    onClick(product)
                 }
 
                 RankingProductCard(
                     index = index * 3 + 2,
-                    product = model.productList[index * 3 + 2]
-                ) {
-                    onClick(it)
+                    product = model.productList[index * 3 + 2],
+                    onLikeClick = { product ->
+                        onLikeClick(product)
+                    }
+                ) { product ->
+                    onClick(product)
                 }
             }
         }

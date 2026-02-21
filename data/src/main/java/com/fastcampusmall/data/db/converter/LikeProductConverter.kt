@@ -1,13 +1,16 @@
 package com.fastcampusmall.data.db.converter
 
 import androidx.room.TypeConverter
+import com.fastcampusmall.data.deserializer.CategoryDeserializer
 import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.domain.model.Price
 import com.fastcampusmall.domain.model.Shop
 import com.google.gson.GsonBuilder
 
 class LikeProductConverter {
-    private val gson = GsonBuilder().create()
+    private val gson = GsonBuilder()
+        .registerTypeAdapter(Category::class.java, CategoryDeserializer())
+        .create()
 
     @TypeConverter
     fun fromPrice(value: Price) : String {

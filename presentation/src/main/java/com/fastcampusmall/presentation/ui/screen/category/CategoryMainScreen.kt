@@ -12,12 +12,12 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.presentation.ui.theme.FastcampusmallTheme
 import com.fastcampusmall.presentation.viewmodel.CategoryViewModel
@@ -28,7 +28,7 @@ fun CategoryMainScreen(
     viewModel: CategoryViewModel = hiltViewModel(),
     onCategoryClick: (Category) -> Unit,
 ) {
-    val categories by viewModel.categories.collectAsState(listOf())
+    val categories by viewModel.categories.collectAsStateWithLifecycle(listOf())
 
     FastcampusmallTheme {
         LazyVerticalGrid(

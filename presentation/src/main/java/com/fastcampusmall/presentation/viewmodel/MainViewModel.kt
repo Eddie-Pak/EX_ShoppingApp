@@ -13,7 +13,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(useCase: MainUseCase) : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val useCase: MainUseCase
+) : ViewModel() {
     private val _columnCount = MutableStateFlow(DEFAULT_COLUMN_COUNT)
     val columnCount get() = _columnCount.asStateFlow()
     val modelList = useCase.getModelList()
@@ -38,6 +40,12 @@ class MainViewModel @Inject constructor(useCase: MainUseCase) : ViewModel() {
 
     fun openBannerList(bannerList: BannerList) {
 
+    }
+
+    fun likeProduct(product: Product) {
+        viewModelScope.launch {
+            useCase.likeProduct(product)
+        }
     }
 
     companion object {

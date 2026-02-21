@@ -109,7 +109,12 @@ fun SearchContent(
                 contentPadding = PaddingValues(10.dp)
             ) {
                 items(searchResult.size) { index ->
-                    ProductCard(searchResult[index]) { model ->
+                    ProductCard(
+                        product = searchResult[index],
+                        onLikeClick = { product ->
+                            viewModel.likeProduct(product)
+                        }
+                    ) { model ->
                         onProductClick(model.productId)
                     }
                 }
