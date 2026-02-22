@@ -4,6 +4,7 @@ import com.fastcampusmall.data.deserializer.BaseModelDeserializer
 import com.fastcampusmall.data.deserializer.CategoryDeserializer
 import com.fastcampusmall.data.repository.AuthRepositoryImpl
 import com.fastcampusmall.data.repository.CategoryRepositoryImpl
+import com.fastcampusmall.data.repository.LikeRepositoryImpl
 import com.fastcampusmall.data.repository.MainRepositoryImpl
 import com.fastcampusmall.data.repository.ProductDetailRepositoryImpl
 import com.fastcampusmall.data.repository.SearchRepositoryImpl
@@ -11,6 +12,7 @@ import com.fastcampusmall.domain.model.BaseModel
 import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.domain.repository.AuthRepository
 import com.fastcampusmall.domain.repository.CategoryRepository
+import com.fastcampusmall.domain.repository.LikeRepository
 import com.fastcampusmall.domain.repository.MainRepository
 import com.fastcampusmall.domain.repository.ProductDetailRepository
 import com.fastcampusmall.domain.repository.SearchRepository
@@ -46,6 +48,12 @@ interface DataModule {
     @Binds
     @Singleton
     fun bindAuthRepository(authRepositoryImpl: AuthRepositoryImpl) : AuthRepository
+
+    @Binds
+    @Singleton
+    fun bindLikeRepository(likeRepositoryImpl: LikeRepositoryImpl) : LikeRepository
+
+
 
     companion object {
         @Provides

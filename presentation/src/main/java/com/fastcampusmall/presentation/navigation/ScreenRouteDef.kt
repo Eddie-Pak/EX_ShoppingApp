@@ -15,6 +15,9 @@ sealed class ScreenRouteDef {
     data object MyPageGraph : ScreenRouteDef()
 
     @Serializable
+    data object LikeGraph : ScreenRouteDef()
+
+    @Serializable
     data object Main : ScreenRouteDef()
 
     @Serializable
@@ -24,6 +27,9 @@ sealed class ScreenRouteDef {
 
     @Serializable
     data object MyPage : ScreenRouteDef()
+
+    @Serializable
+    data object Like : ScreenRouteDef()
 
     @Serializable
     data class ProductDetail(val productId: String) : ScreenRouteDef()

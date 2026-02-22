@@ -12,6 +12,7 @@ import com.fastcampusmall.presentation.common.parcelableType
 import com.fastcampusmall.presentation.ui.screen.category.CategoryDetailScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
 import com.fastcampusmall.presentation.ui.screen.detail.ProductDetailScreen
+import com.fastcampusmall.presentation.ui.screen.like.LikeScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
 import com.fastcampusmall.presentation.ui.screen.mypage.MyPageScreen
 import com.fastcampusmall.presentation.ui.screen.search.SearchScreen
@@ -33,10 +34,9 @@ fun AppNavHost(
             composable<ScreenRouteDef.Main> {
                 MainScreen(
                     modifier = modifier,
-                    onProductClick = { productId ->
-                        navController.navigate(ScreenRouteDef.ProductDetail(productId))
-                    }
-                )
+                ) { productId ->
+                    navController.navigate(ScreenRouteDef.ProductDetail(productId))
+                }
             }
         }
 
@@ -62,9 +62,19 @@ fun AppNavHost(
 
         navigation<ScreenRouteDef.MyPageGraph>(
             startDestination = ScreenRouteDef.MyPage
-        ){
+        ) {
             composable<ScreenRouteDef.MyPage> {
                 MyPageScreen(modifier)
+            }
+        }
+
+        navigation<ScreenRouteDef.LikeGraph>(
+            startDestination = ScreenRouteDef.Like
+        ) {
+            composable<ScreenRouteDef.Like> {
+                LikeScreen(modifier) { productId ->
+                    navController.navigate(ScreenRouteDef.ProductDetail(productId))
+                }
             }
         }
 

@@ -25,7 +25,8 @@ fun EntryPointScreen() {
     val showBottomBarRoutes = listOf(
         ScreenRouteDef.Main::class.qualifiedName,
         ScreenRouteDef.CategoryMain::class.qualifiedName,
-        ScreenRouteDef.MyPage::class.qualifiedName
+        ScreenRouteDef.MyPage::class.qualifiedName,
+        ScreenRouteDef.Like::class.qualifiedName
     )
 
     val isShowBar = showBottomBarRoutes.any { route ->

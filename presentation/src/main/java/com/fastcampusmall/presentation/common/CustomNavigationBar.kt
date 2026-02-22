@@ -37,6 +37,11 @@ fun CustomNavigationBar(
             tabName = "MyPage",
             icon = ImageVector.vectorResource(R.drawable.icon_mypage),
             route = ScreenRouteDef.MyPageGraph
+        ),
+        BottomNaviItem(
+            tabName = "Like",
+            icon = ImageVector.vectorResource(R.drawable.icon_heart),
+            route = ScreenRouteDef.LikeGraph
         )
     )
 
