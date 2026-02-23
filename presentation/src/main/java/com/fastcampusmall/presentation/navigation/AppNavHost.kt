@@ -9,6 +9,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.toRoute
 import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.presentation.common.parcelableType
+import com.fastcampusmall.presentation.ui.screen.basket.BasketScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryDetailScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
 import com.fastcampusmall.presentation.ui.screen.detail.ProductDetailScreen
@@ -88,6 +89,10 @@ fun AppNavHost(
             SearchScreen() { productId ->
                 navController.navigate(ScreenRouteDef.ProductDetail(productId))
             }
+        }
+
+        composable<ScreenRouteDef.Basket> {
+            BasketScreen(modifier)
         }
     }
 }

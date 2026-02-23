@@ -37,9 +37,14 @@ fun EntryPointScreen() {
         snackbarHost = { snackBarHostState },
         topBar = {
             if (isShowBar) {
-                CustomAppBar() {
-                    navController.navigate(ScreenRouteDef.Search)
-                }
+                CustomAppBar(
+                    onSearchClick = {
+                        navController.navigate(ScreenRouteDef.Search)
+                    },
+                    onBasketClick = {
+                        navController.navigate(ScreenRouteDef.Basket)
+                    }
+                )
             }
         },
         bottomBar = {

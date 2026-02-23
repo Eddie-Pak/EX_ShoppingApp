@@ -18,9 +18,10 @@ import com.fastcampusmall.data.db.entity.SearchKeywordEntity
         PurchaseProductEntity::class,
         SearchKeywordEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
+
 abstract class ApplicationDatabase : RoomDatabase() {
     companion object {
         const val DB_NAME = "ApplicationDatabase.db"

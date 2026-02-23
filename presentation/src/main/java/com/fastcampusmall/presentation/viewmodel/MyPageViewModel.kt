@@ -27,7 +27,9 @@ class MyPageViewModel @Inject constructor(
     }
 
     fun signOut() {
-        authUseCase.signOut()
-        _accountInfo.value = null
+        viewModelScope.launch {
+            authUseCase.signOut()
+            _accountInfo.value = null
+        }
     }
 }

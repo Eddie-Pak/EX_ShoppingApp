@@ -5,6 +5,8 @@ import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import com.fastcampusmall.data.datasource.PreferenceDataSource
+import com.fastcampusmall.data.db.dao.BasketProductDao
+import com.fastcampusmall.data.db.dao.LikeProductDao
 import com.fastcampusmall.domain.model.AccountInfo
 import com.fastcampusmall.domain.repository.AuthRepository
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
@@ -17,7 +19,9 @@ class AuthRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val credentialManager: CredentialManager,
     private val getCredentialRequest: GetCredentialRequest,
-    private val preferenceDataSource: PreferenceDataSource
+    private val preferenceDataSource: PreferenceDataSource,
+    private val likeProductDao: LikeProductDao,
+    private val basketProductDao: BasketProductDao
 ) : AuthRepository {
     override suspend fun signIn(context: Context): Result<AccountInfo> = try {
         val result = credentialManager.getCredential(context = context, request = getCredentialRequest)
@@ -48,8 +52,10 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun getAccountInfo(): AccountInfo? = preferenceDataSource.getAccountInfo()
 
-    override fun signOut() {
+    override suspend fun signOut() {
         auth.signOut()
+        likeProductDao.deleteAll()
+        basketProductDao.deleteAll()
         preferenceDataSource.removeAccountInfo()
     }
 }

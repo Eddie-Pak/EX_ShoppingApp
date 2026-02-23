@@ -15,7 +15,8 @@ import com.fastcampusmall.presentation.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomAppBar(
-    onSearchClick: () -> Unit
+    onSearchClick: () -> Unit,
+    onBasketClick: () -> Unit
 ) {
     CenterAlignedTopAppBar(
         title = { Text(text = "Fastcampusmall") },
@@ -28,6 +29,17 @@ fun CustomAppBar(
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.icon_search),
                     contentDescription = "Search"
+                )
+            }
+
+            IconButton(
+                onClick = {
+                    onBasketClick()
+                }
+            ) {
+                Icon(
+                    imageVector = ImageVector.vectorResource(R.drawable.icon_cart),
+                    contentDescription = "Basket"
                 )
             }
         },

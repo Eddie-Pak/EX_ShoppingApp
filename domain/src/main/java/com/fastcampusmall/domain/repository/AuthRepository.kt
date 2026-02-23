@@ -6,5 +6,5 @@ import com.fastcampusmall.domain.model.AccountInfo
 interface AuthRepository {
     suspend fun signIn(context: Context): Result<AccountInfo>
     fun getAccountInfo(): AccountInfo?
-    fun signOut()
+    suspend fun signOut()
 }

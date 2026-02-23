@@ -9,5 +9,5 @@ class AuthUseCase @Inject constructor(
 ) {
     suspend fun signIn(context: Context) = authRepository.signIn(context)
     fun getAccountInfo() = authRepository.getAccountInfo()
-    fun signOut() = authRepository.signOut()
+    suspend fun signOut() = authRepository.signOut()
 }

@@ -36,4 +36,7 @@ sealed class ScreenRouteDef {
 
     @Serializable
     data object Search : ScreenRouteDef()
+
+    @Serializable
+    data object Basket : ScreenRouteDef()
 }
