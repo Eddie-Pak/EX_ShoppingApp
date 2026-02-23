@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fastcampusmall.domain.model.BasketProduct
 import com.fastcampusmall.presentation.ui.component.BasketProductCard
 import com.fastcampusmall.presentation.ui.theme.FastcampusmallTheme
 import com.fastcampusmall.presentation.ui.theme.Purple200
