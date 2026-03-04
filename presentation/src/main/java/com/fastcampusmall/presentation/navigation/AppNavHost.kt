@@ -6,9 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import androidx.navigation.navDeepLink
 import androidx.navigation.toRoute
-import com.fastcampusmall.domain.model.Category
-import com.fastcampusmall.presentation.common.parcelableType
 import com.fastcampusmall.presentation.ui.screen.basket.BasketScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryDetailScreen
 import com.fastcampusmall.presentation.ui.screen.category.CategoryMainScreen
@@ -17,7 +16,6 @@ import com.fastcampusmall.presentation.ui.screen.like.LikeScreen
 import com.fastcampusmall.presentation.ui.screen.main.MainScreen
 import com.fastcampusmall.presentation.ui.screen.mypage.MyPageScreen
 import com.fastcampusmall.presentation.ui.screen.search.SearchScreen
-import kotlin.reflect.typeOf
 
 @Composable
 fun AppNavHost(
@@ -46,16 +44,16 @@ fun AppNavHost(
         ) {
             composable<ScreenRouteDef.CategoryMain> {
                 CategoryMainScreen(modifier) { category ->
-                    navController.navigate(ScreenRouteDef.CategoryDetail(category))
+                    navController.navigate(ScreenRouteDef.CategoryDetail(category.categoryId))
                 }
             }
 
             composable<ScreenRouteDef.CategoryDetail>(
-                typeMap = mapOf(typeOf<Category>() to parcelableType<Category>())
+                deepLinks = listOf(navDeepLink<ScreenRouteDef.CategoryDetail>( basePath = DeepLink.CATEGORY_DETAIL))
             ) { backStackEntry ->
-                val category = backStackEntry.toRoute<ScreenRouteDef.CategoryDetail>()
+                val categoryId = backStackEntry.toRoute<ScreenRouteDef.CategoryDetail>().categoryId
 
-                CategoryDetailScreen(modifier = modifier, category = category.category) { productId ->
+                CategoryDetailScreen(modifier = modifier, categoryId = categoryId) { productId ->
                     navController.navigate(ScreenRouteDef.ProductDetail(productId))
                 }
             }
@@ -79,14 +77,16 @@ fun AppNavHost(
             }
         }
 
-        composable<ScreenRouteDef.ProductDetail> { backStackEntry ->
+        composable<ScreenRouteDef.ProductDetail>(
+            deepLinks = listOf(navDeepLink<ScreenRouteDef.ProductDetail>( basePath = DeepLink.PRODUCT_DETAIL))
+        ) { backStackEntry ->
             val productId = backStackEntry.toRoute<ScreenRouteDef.ProductDetail>().productId
 
             ProductDetailScreen(productId)
         }
 
         composable<ScreenRouteDef.Search> {
-            SearchScreen() { productId ->
+            SearchScreen(modifier) { productId ->
                 navController.navigate(ScreenRouteDef.ProductDetail(productId))
             }
         }

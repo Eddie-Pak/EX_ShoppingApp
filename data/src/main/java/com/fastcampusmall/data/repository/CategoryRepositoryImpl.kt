@@ -31,10 +31,10 @@ class CategoryRepositoryImpl @Inject constructor(
         )
     }
 
-    override fun getProductsByCategory(category: Category): Flow<List<Product>> {
+    override fun getProductsByCategory(categoryId: String): Flow<List<Product>> {
         return dataSource.getHomeComponents().map { list ->
             list.filterIsInstance<Product>().filter { product ->
-                product.category.categoryId == category.categoryId
+                product.category.categoryId == categoryId
             }
         }.combine(likeProductDao.getAll()) { products, likeList ->
             products.map { product ->

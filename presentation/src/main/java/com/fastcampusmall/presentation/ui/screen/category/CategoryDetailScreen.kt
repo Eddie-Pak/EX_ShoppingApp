@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.presentation.ui.component.ProductCard
 import com.fastcampusmall.presentation.ui.theme.FastcampusmallTheme
 import com.fastcampusmall.presentation.viewmodel.CategoryViewModel
@@ -18,14 +17,14 @@ import com.fastcampusmall.presentation.viewmodel.CategoryViewModel
 @Composable
 fun CategoryDetailScreen(
     modifier: Modifier,
-    category: Category,
+    categoryId: String,
     viewModel: CategoryViewModel = hiltViewModel(),
     onProductClick: (String) -> Unit
 ) {
     val products by viewModel.products.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
-        viewModel.getProductsByCategory(category)
+        viewModel.getProductsByCategory(categoryId)
     }
 
     FastcampusmallTheme {

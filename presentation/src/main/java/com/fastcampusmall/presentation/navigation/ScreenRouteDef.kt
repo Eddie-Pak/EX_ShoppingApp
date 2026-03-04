@@ -1,6 +1,5 @@
 package com.fastcampusmall.presentation.navigation
 
-import com.fastcampusmall.domain.model.Category
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -23,7 +22,7 @@ sealed class ScreenRouteDef {
     @Serializable
     data object CategoryMain : ScreenRouteDef()
     @Serializable
-    data class CategoryDetail(val category: Category) : ScreenRouteDef()
+    data class CategoryDetail(val categoryId: String) : ScreenRouteDef()
 
     @Serializable
     data object MyPage : ScreenRouteDef()

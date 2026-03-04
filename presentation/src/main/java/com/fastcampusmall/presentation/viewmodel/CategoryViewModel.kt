@@ -2,7 +2,6 @@ package com.fastcampusmall.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fastcampusmall.domain.model.Category
 import com.fastcampusmall.domain.model.Product
 import com.fastcampusmall.domain.usecase.CategoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,8 +20,8 @@ class CategoryViewModel @Inject constructor(
     private val _products = MutableStateFlow<List<Product>>(listOf())
     val products get() = _products.asStateFlow()
 
-    suspend fun getProductsByCategory(category: Category) {
-        useCase.getProductsByCategory(category).collectLatest {
+    suspend fun getProductsByCategory(categoryId: String) {
+        useCase.getProductsByCategory(categoryId).collectLatest {
             _products.emit(it)
         }
     }

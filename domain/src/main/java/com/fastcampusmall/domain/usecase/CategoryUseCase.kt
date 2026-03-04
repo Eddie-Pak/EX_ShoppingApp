@@ -11,8 +11,8 @@ class CategoryUseCase @Inject constructor(private val repository: CategoryReposi
         return repository.getCategories()
     }
 
-    fun getProductsByCategory(category: Category): Flow<List<Product>> {
-        return repository.getProductsByCategory(category)
+    fun getProductsByCategory(categoryId: String): Flow<List<Product>> {
+        return repository.getProductsByCategory(categoryId)
     }
 
     suspend fun likeProduct(product: Product) {
