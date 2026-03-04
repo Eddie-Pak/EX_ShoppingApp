@@ -31,6 +31,7 @@ import com.fastcampusmall.presentation.viewmodel.SearchViewModel
 
 @Composable
 fun SearchContent(
+    modifier: Modifier,
     viewModel: SearchViewModel,
     openFilterDialog: (SearchFilter.Type) -> Unit,
     onProductClick: (String) -> Unit
@@ -41,7 +42,9 @@ fun SearchContent(
     var keyword by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    Column {
+    Column(
+        modifier = modifier.fillMaxSize()
+    ) {
         SearchBox(keyword = keyword,
             onValueChange = { keyword = it },
             searchAction = {

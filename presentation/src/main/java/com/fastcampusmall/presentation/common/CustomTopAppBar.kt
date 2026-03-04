@@ -15,11 +15,12 @@ import com.fastcampusmall.presentation.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomAppBar(
+    title: String,
     onSearchClick: () -> Unit,
     onBasketClick: () -> Unit
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = "Fastcampusmall") },
+        title = { Text(text = title) },
         actions = {
             IconButton(
                 onClick = {

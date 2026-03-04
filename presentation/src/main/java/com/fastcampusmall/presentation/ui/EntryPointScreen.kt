@@ -13,6 +13,8 @@ import com.fastcampusmall.presentation.common.CustomAppBar
 import com.fastcampusmall.presentation.navigation.AppNavHost
 import com.fastcampusmall.presentation.common.CustomNavigationBar
 import com.fastcampusmall.presentation.navigation.ScreenRouteDef
+import com.fastcampusmall.presentation.navigation.ScreenTitle
+import com.fastcampusmall.presentation.utils.getRouteTitle
 
 @Composable
 fun EntryPointScreen() {
@@ -21,23 +23,38 @@ fun EntryPointScreen() {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    val currentTitle = navBackStackEntry?.getRouteTitle() ?: ScreenTitle.FAST_MALL
 
     val showBottomBarRoutes = listOf(
         ScreenRouteDef.Main::class.qualifiedName,
         ScreenRouteDef.CategoryMain::class.qualifiedName,
         ScreenRouteDef.MyPage::class.qualifiedName,
-        ScreenRouteDef.Like::class.qualifiedName
+        ScreenRouteDef.Like::class.qualifiedName,
     )
 
-    val isShowBar = showBottomBarRoutes.any { route ->
+    val isShowBottomBar = showBottomBarRoutes.any { route ->
+        currentDestination?.route?.contains(route ?: "") == true
+    }
+
+    val showAppBarRoutes = listOf(
+        ScreenRouteDef.Main::class.qualifiedName,
+        ScreenRouteDef.CategoryMain::class.qualifiedName,
+        ScreenRouteDef.MyPage::class.qualifiedName,
+        ScreenRouteDef.Like::class.qualifiedName,
+        ScreenRouteDef.Basket::class.qualifiedName,
+        ScreenRouteDef.Search::class.qualifiedName
+    )
+
+    val isShowAppBar = showAppBarRoutes.any { route ->
         currentDestination?.route?.contains(route ?: "") == true
     }
 
     Scaffold(
         snackbarHost = { snackBarHostState },
         topBar = {
-            if (isShowBar) {
+            if (isShowAppBar) {
                 CustomAppBar(
+                    title = currentTitle,
                     onSearchClick = {
                         navController.navigate(ScreenRouteDef.Search)
                     },
@@ -48,7 +65,7 @@ fun EntryPointScreen() {
             }
         },
         bottomBar = {
-            if (isShowBar) {
+            if (isShowBottomBar) {
                 CustomNavigationBar(navController)
             }
         }

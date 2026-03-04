@@ -27,6 +27,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
+    modifier: Modifier,
     viewModel: SearchViewModel = hiltViewModel(),
     onProductClick: (String) -> Unit,
 ) {
@@ -48,7 +49,7 @@ fun SearchScreen(
         sheetDragHandle = { BottomSheetDefaults.DragHandle() },
         sheetContent = {
             Box(
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxWidth()
                     .navigationBarsPadding()
             ) {
@@ -83,6 +84,7 @@ fun SearchScreen(
         }
     ) {
         SearchContent(
+            modifier = modifier,
             viewModel = viewModel,
             openFilterDialog = { type ->
                 currentFilterType = type
